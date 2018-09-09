@@ -5,6 +5,14 @@ const Query = {
     return ctx.db.query.posts({ where: { isPublished: true } }, info)
   },
 
+  meetings(parent, args, ctx, info) {
+    return ctx.db.query.meetings({ where: { isPublished: true } }, info)
+  },
+
+  destinations(parent, args, ctx, info) {
+    return ctx.db.query.destinations({}, info)
+  },
+
   drafts(parent, args, ctx, info) {
     const id = getUserId(ctx)
 

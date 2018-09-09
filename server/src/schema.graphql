@@ -1,15 +1,24 @@
-# import Post from "./generated/prisma.graphql"
+# import Post, Meeting, Destination from "./generated/prisma.graphql"
 
 type Query {
   feed: [Post!]!
   drafts: [Post!]!
   post(id: ID!): Post
   me: User
+
+  meetings: [Meeting!]!
+  destinations: [Destination!]!
 }
 
 type Mutation {
   signup(email: String!, password: String!, name: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
+
+  createDestination(title: String!): Destination!
+  createMeeting(destinationId: ID!): Meeting!
+  publishMeeting(id: ID!): Meeting!
+  deleteMeeting(id: ID!): Meeting!
+
   createDraft(title: String!, text: String!): Post!
   publish(id: ID!): Post!
   deletePost(id: ID!): Post!
@@ -17,6 +26,7 @@ type Mutation {
 
 type Subscription {
   feedSubscription: PostSubscriptionPayload!
+  meetingsSubscription: MeetingSubscriptionPayload!
 }
 
 type AuthPayload {

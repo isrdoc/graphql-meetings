@@ -4,6 +4,12 @@ const Subscription = {
       return ctx.db.subscription.post({}, info)
     },
   },
+
+  meetingsSubscription: {
+    subscribe: (parent, args, ctx, info) => {
+      return ctx.db.subscription.meeting({}, info)
+    },
+  },
 }
 
 // This is the same subscription as above but only fires for 

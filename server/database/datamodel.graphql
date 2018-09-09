@@ -1,3 +1,24 @@
+type Meeting {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  isPublished: Boolean! @default(value: "false")
+  author: User!
+  destination: Destination!
+  # departure: DateTime!
+  # gathering: Gathering!
+}
+
+type Destination {
+  id: ID! @unique
+  title: String @unique
+}
+
+type Gathering {
+  id: ID! @unique
+  title: String @unique
+}
+
 type Post {
   id: ID! @unique
   createdAt: DateTime!
@@ -14,4 +35,5 @@ type User {
   password: String!
   name: String!
   posts: [Post!]!
+  meetings: [Meeting!]!
 }
